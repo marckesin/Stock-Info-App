@@ -1,0 +1,142 @@
+
+h4{
+  margin: auto 0 0 0;
+}
+
+.card-logo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card:hover{
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: 0.5s;
+  /* transform: scale(1.05); */
+}
+
+.cod{
+  margin: 0 1.5rem 0 0;
+}
+
+.contact-icons{
+  text-decoration: none;
+}
+
+.contact-icons svg:hover{
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
+.container-sm{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.date{
+  margin-bottom: 0.3rem;
+}
+
+.li-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.li-text{
+  margin-left: 3rem;
+}
+
+.list-group-item{
+  font-size: medium;
+  font-weight: 500;
+}
+
+.logo{
+  border-radius: 15%;
+  height: 3.25rem;
+  width: 3.25rem;
+}
+
+.navbar{
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.nav-item a:hover{
+  background-color: rgba(255, 255, 255)!important;
+  color: #0D6EFD!important;
+  transition: 0.3s!important;
+}
+
+.no-info{
+  display: flex;
+  padding: 2rem 0;
+  margin: 0 auto;
+}
+
+.tags:hover{
+  cursor: pointer;
+  transition: 0.3s;
+  transform: translateY(-5px);
+}
+
+.td-card{
+  background-color: #084298!important;
+  color: #fff;
+  font-size: larger;
+  padding: .5rem 0 .5rem 1rem!important;
+  text-align: left;
+}
+
+.text-decoration-none:hover{
+  color: #0D6EFD!important;
+  transition: 0.2s;
+}
+
+.title-logo{
+  margin: 0 auto 0 1.5rem;
+}
+
+.tr-card{
+  border-bottom: 1px solid #0D6EFD!important;
+  border-top: 1px solid #0D6EFD!important;
+}
+
+
+@media(max-width: 576px){
+  .card{
+    border-radius: 0.85rem!important;
+  }
+
+  .card-test{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 85%;
+    margin: auto;
+  }
+
+  .card-title{
+    font-size: xx-large;
+  }
+
+  .cod{
+    margin: 1.1rem 0;
+  }
+
+  .col-sm-6{
+    width: 50%!important;
+  }
+
+  .no-info{
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    height: 17rem;
+  }
+}

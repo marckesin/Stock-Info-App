@@ -1,0 +1,137 @@
+<%- include('./partials/header'); %>
+
+  <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+      <% for(let item of info){ %>
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card card-test border-primary border-2 bg-light mt-3">
+            <div class="card-body text-primary text-start pb-1">
+              <h3 class="card-title mb-0">
+                <%= item.symbol %>
+              </h3>
+              <hr class="my-1">
+              <span class="badge bg-primary">
+                <%= item.shortName %>
+              </span>
+            </div>
+            <table class="table table-hover mb-0">
+              <tbody>
+                <thead>
+                  <!-- <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Second</th>
+                  </tr> -->
+                </thead>
+                <tr class="tr-card">
+                  <td class="td-card">Preço atual</td>
+                  <td class="td-card"><span class="badge bg-primary">
+                      <%= item.regularMarketPrice %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Abertura</td>
+                  <td class="td-card"><span class="badge bg-primary">
+                      <%= item.regularMarketOpen %>
+                    </span></td>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Máxima</td>
+                  <td class="td-card"><span class="badge bg-primary">
+                      <%= item.regularMarketDayHigh %>
+                    </span></td>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Mínima</td>
+                  <td class="td-card"><span class="badge bg-primary">
+                      <%= item.regularMarketDayLow %>
+                    </span></td>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Volume</td>
+                  <td class="td-card"><span class="badge bg-primary">
+                      <%= item.regularMarketVolume %>
+                    </span></td>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Variação</td>
+                  <% if(item.regularMarketChange < 0){ %>
+                    <td class="td-card"><span class="badge bg-danger">
+                        <%= item.regularMarketChange %>
+                      </span></td>
+                    <% }else{ %>
+                      <td class="td-card"><span class="badge bg-primary">
+                          <%= item.regularMarketChange %>
+                        </span></td>
+                      <% } %>
+                </tr>
+                <tr class="tr-card">
+                  <td class="td-card">Var. Percentual</td>
+                  <% if(item.regularMarketChangePercent < 0){ %>
+                    <td class="td-card"><span class="badge bg-danger">
+                        <%= item.regularMarketChangePercent %>%
+                      </span></td>
+                    <% }else{ %>
+                      <td class="td-card"><span class="badge bg-primary">
+                          <%= item.regularMarketChangePercent %>%
+                        </span></td>
+                      <% } %>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="card-body">
+              <div class="container-sm">
+                <a class="btn btn-outline-primary hvr-grow" href="/<%= item.symbol %>">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-info-lg" viewBox="0 0 16 16">
+                    <path
+                      d="m10.277 5.433-4.031.505-.145.67.794.145c.516.123.619.309.505.824L6.101 13.68c-.34 1.578.186 2.32 1.423 2.32.959 0 2.072-.443 2.577-1.052l.155-.732c-.35.31-.866.434-1.206.434-.485 0-.66-.34-.536-.939l1.763-8.278zm.122-3.673a1.76 1.76 0 1 1-3.52 0 1.76 1.76 0 0 1 3.52 0z" />
+                  </svg>
+                </a>
+                <form action="/update" method="POST">
+                  <button type="submit" class="btn btn-outline-primary" name="update"
+                    value="<%= item._id %> <%= item.symbol %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                      <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                      <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                    </svg>
+                  </button>
+                </form>
+                <form action="/delete" method="POST">
+                  <button type="submit" class="btn btn-outline-danger" name="close" value="<%= item.symbol %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                      class="bi bi-trash" viewBox="0 0 16 16">
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                      <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+            </div>
+
+            <small class="text-muted date"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 14 22">
+                <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                <path
+                  d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+              </svg>
+              <%= item.regularMarketTime.toLocaleDateString('pt-BR') %>
+            </small>
+          </div>
+        </div>
+
+        <% } %>
+
+    </div>
+  </main>
+
+  <%- include('./partials/footer'); %>

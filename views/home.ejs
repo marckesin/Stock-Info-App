@@ -1,0 +1,26 @@
+<%- include('./partials/header'); %>
+
+    <div class="px-4 py-5 my-4 text-center bg-light text-dark">
+        <img class="d-block mx-auto mb-4" src="/svgs/comments-dollar-solid.svg" alt="" width="72" height="72">
+        <h1 class="display-4 mb-3 fw-normal">Stock Info</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Encontre informações relevantes sobre o mercado de ações no Brasil e no mundo.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <form class="w-100" action="/cards" method="POST">
+                    <div class="input-group mb-3">
+                        <input type="search" name="search" class="form-control" id="search" placeholder="PETR4.SA" autocomplete="off">
+                        <button class="btn btn-primary btn-md" type="submit" id="button-addon2">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<!--     
+    <input type="text" name="teste" id="teste" onkeyup="myFunc()">
+    <p id="texto"></p>
+
+    <script src="\javascripts\test.js"></script> -->
+
+<%- include('./partials/footer'); %>
