@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "engines": {
-    "node": "14.16.1"
+    "node": "14.x"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -24,5 +24,5 @@
   "main": "app.js",
   "author": "Ronaldo",
   "license": "ISC",
-  "description": "Stocks, IBOV, Nyse, Nasdaq, Prices"
+  "description": "App para obter informações do mercado de ações por meio das API's do Yahoo Finance, Alpha Vantage e Polygon. Integração com banco de dados NoSQL MongoDB Atlas para armazenamento das informações obtidas."
 }
