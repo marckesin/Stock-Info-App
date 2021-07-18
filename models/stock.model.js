@@ -75,23 +75,6 @@ const polygonSchema = mongoose.Schema({
     similar: Array,
     symbol: String,
     tags: Array
-    // listdate: Date,
-    // country: String,
-    // industry: String,
-    // sector: String,
-    // marketcap: Number,
-    // employees: Number,
-    // phone: String,
-    // url: String,
-    // exchange: String,
-    // name: String,
-    // exchangeSymbol: String,
-    // hq_address: String,
-    // hq_state: String,
-    // hq_country: String,
-    // type: { type: String },
-    // updated: Date,
-    // active: Boolean
 });
 
 
@@ -101,13 +84,9 @@ const yahooPriceSchema = mongoose.Schema({
     ceo: String,
     city: String,
     country: String,
-    currency: String,
-    currencySymbol: String,
     dividendYield: Number,
     ebitda: String,
     enterpriseValue: String,
-    exchange: String,
-    exchangeName: String,
     fiftyDayAverage: Number,
     fiftyTwoWeekHigh: Number,
     fiftyTwoWeekLow: Number,
@@ -116,9 +95,10 @@ const yahooPriceSchema = mongoose.Schema({
     longBusinessSummary: String,
     longName: String,
     marketCap: String,
-    peRatio: Number,
-    phone: {type: String, default: '-'},
+    phone: { type: String, default: '----' },
+    profitMargins: String,
     quoteSourceName: String,
+    recommendationKey: String,
     regularMarketChange: Number,
     regularMarketChangePercent: Number,
     regularMarketDayHigh: Number,
@@ -128,20 +108,25 @@ const yahooPriceSchema = mongoose.Schema({
     regularMarketPrice: Number,
     regularMarketTime: Date,
     regularMarketVolume: String,
+    returnOnEquity: String,
     sector: String,
     shortName: String,
     state: String,
     summaryDetail: Object,
     symbol: String,
-    trailingPE: { type: Number, default: 'NA' },
     twoHundredDayAverage: Number,
     website: String,
     _52WeekChange: Number
+});
+
+const extraSchema = mongoose.Schema({
+    logo_url : String
 });
 
 
 module.exports = {
     company: mongoose.model('Company', companySchema),
     polygon: mongoose.model('Polygon', polygonSchema),
-    price: mongoose.model('Price', yahooPriceSchema)
+    price: mongoose.model('Price', yahooPriceSchema),
+    info: mongoose.model('Infos', extraSchema)
 }

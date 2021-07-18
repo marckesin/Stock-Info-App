@@ -3,15 +3,9 @@ h4{
   margin: auto 0 0 0;
 }
 
-.card-logo{
-  display: flex;
-  justify-content: space-between;
-}
-
 .card:hover{
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   transition: 0.5s;
-  /* transform: scale(1.05); */
 }
 
 .cod{
@@ -36,24 +30,8 @@ h4{
   margin-bottom: 0.3rem;
 }
 
-.li-info{
-  display: flex;
-  justify-content: space-between;
-}
-
-.li-text{
-  margin-left: 3rem;
-}
-
 .list-group-item{
-  font-size: medium;
   font-weight: 500;
-}
-
-.logo{
-  border-radius: 15%;
-  height: 3.25rem;
-  width: 3.25rem;
 }
 
 .navbar{
@@ -140,9 +118,4 @@ h4{
     justify-content: space-between;
     height: 17rem;
   }
-}
-
-.test{
-  display: flex;
-  flex-direction: column;
 }

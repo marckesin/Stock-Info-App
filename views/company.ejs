@@ -13,219 +13,295 @@
             </span>
         </div>
         <div class="card-body">
-            <div class="card-logo">
-                <h1 class="card-title">
-                    <%= info.longName %>
-                </h1>
-            </div>
-            <hr>
-            <p class="card-text">
-                <%= info.longBusinessSummary %>
-            </p>
-            <hr>
-            <br>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="li-info">
-                        <p class="fs-6 mb-0">CEO</p>
-                        <p class="li-text text-end mb-0">
-                            <%=info.ceo%>
-                        </p>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="li-info">
-                        <p class="fs-6 mb-0">Sede</p>
-                        <p class="li-text text-end mb-0">
-                            <%=info.address1%>
-                                <%=info.city%>/<%=info.state%> - <%=info.country%>
-                        </p>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="li-info">
-                        <p class="fs-6 mb-0">Site</p>
-                        <a href="<%= info.website %>" class="link-secondary" target="_blank">
-                            <%=info.website%>
-                        </a>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="li-info">
-                        <p class="fs-6 mb-0">Colaboradores</p>
-                        <p class="li-text text-end mb-0">
-                            <%=info.fullTimeEmployees%>
-                        </p>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="li-info">
-                        <p class="fs-6 mb-0">Fone</p>
-                        <p class="li-text text-end mb-0">
-                            <%=info.phone%>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            <hr>
-            <br>
-            <h4 class="fs-3">Indicadores de Análise Fundamentalista</h4><br>
-
-            <div class="row mb-5">
-                <div class="col-sm-12 col-md-4 col-lg-3 mb-1">
-                    <div class="card bg-dark text-light mb-1">
-                        <div class="card-header">Preço Atual</div>
-                        <div class="card-body">
-                            <h5 class="fs-2 fw-bold">
-                                <%= info.regularMarketPrice %>
-                            </h5>
-                        </div>
-                    </div>
+            <%if(polygonInfo.logo){%>
+                <div class="d-flex">
+                    <img class="rounded-3  my-auto" src="<%=polygonInfo.logo%>" alt="" width="52" height="52">
+                    <h1 class="card-title mx-3">
+                        <%= info.longName %>
+                    </h1>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                    <div class="card border-dark mb-1">
-                        <div class="card-header">Min. 52 Semanas</div>
-                        <div class="card-body">
-                            <h5 class="fs-2 fw-bold">
-                                <%= info.fiftyTwoWeekLow %>
-                            </h5>
-                        </div>
+                <%}else if(yahooInfo.logo){%>
+                    <div class="d-flex">
+                        <img class="rounded-3  my-auto" src="<%=yahooInfo.logo%>" alt="" width="52" height="52">
+                        <h1 class="card-title mx-3">
+                            <%= info.longName %>
+                        </h1>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                    <div class="card border-dark mb-1">
-                        <div class="card-header">Max. 52 Semanas</div>
-                        <div class="card-body">
-                            <h5 class="fs-2 fw-bold">
-                                <%= info.fiftyTwoWeekHigh %>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                    <div class="card border-dark mb-1">
-                        <div class="card-header">Capitalização de Mercado</div>
-                        <div class="card-body">
-                            <h5 class="fs-2 fw-bold">
-                                <%= info.marketCap %>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-                <% if(info._52WeekChange < 0){ %>
-                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                        <div class="card border-danger text-danger mb-1">
-                            <div class="card-header">Variação 52 Semanas</div>
-                            <div class="card-body">
-                                <h5 class="fs-2 fw-bold">
-                                    <%= info._52WeekChange %>%
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <%} else{ %>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                            <div class="card border-dark mb-1">
-                                <div class="card-header">Variação 52 Semanas</div>
-                                <div class="card-body">
-                                    <h5 class="fs-2 fw-bold">
-                                        <%= info._52WeekChange %>%
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">Dividend Yield</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.dividendYield %>%
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">Média 200 Dias</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.twoHundredDayAverage %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">Média 50 Dias</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.fiftyDayAverage %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">EBITDA</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.ebitda %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">EV</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.enterpriseValue %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">Volume Médio 10 Dias</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.averageVolume10days %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
-                                <div class="card border-dark mb-1">
-                                    <div class="card-header">P/L</div>
-                                    <div class="card-body">
-                                        <h5 class="fs-2 fw-bold">
-                                            <%= info.trailingPE %>
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-
-            </div>
-            <% if(polygonInfo.similar){ %>
-                <hr>
-                <p class="fs-4">Empresas do setor</p>
-                <% for(let item of polygonInfo.similar){ %>
-                    <a href="/<%=item%>"><span class="badge bg-secondary fs-6 mx-1 my-1 tags">
-                            <%= item %>
-                        </span></a>
-                    <% } %>
-                        <% } %>
-                            <br>
+                    <%}else{%>
+                        <h1 class="card-title">
+                            <%= info.longName %>
+                        </h1>
+                        <%}%>
                             <hr>
-                            <a href="/cards" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
-                                </svg>
-                                Cards
-                            </a>
+                            <p class="card-text">
+                                <%= info.longBusinessSummary %>
+                            </p>
+                            <hr>
+                            <br>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="d-flex">
+                                        <p class="fs-6 mb-0">CEO</p>
+                                        <p class="ms-auto mb-0">
+                                            <%=info.ceo%>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="d-flex">
+                                        <p class="fs-6 mb-0">Sede</p>
+                                        <p class="text-end ms-auto mb-0">
+                                            <%=info.address1%>
+                                                <%=info.city%>/<%=info.state%> - <%=info.country%>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="d-flex">
+                                        <p class="fs-6 mb-0">Site</p>
+                                        <a href="<%= info.website %>" class="link-secondary ms-auto mb-0"
+                                            target="_blank">
+                                            <%=info.website%>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="d-flex">
+                                        <p class="fs-6 mb-0">Colaboradores</p>
+                                        <p class="ms-auto mb-0">
+                                            <%=info.fullTimeEmployees%>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="d-flex">
+                                        <p class="fs-6 mb-0">Fone</p>
+                                        <p class="ms-auto mb-0">
+                                            <%=info.phone%>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr>
+                            <br>
+                            <h4 class="fs-3">Indicadores de Análise Fundamentalista</h4><br>
+
+                            <div class="row mb-5">
+                                <div class="col-sm-12 col-md-4 col-lg-3 mb-1">
+                                    <div class="card bg-dark text-light mb-1">
+                                        <div class="card-header">Preço Atual</div>
+                                        <div class="card-body">
+                                            <h5 class="fs-2 fw-bold">
+                                                <%= info.regularMarketPrice %>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                    <div class="card border-dark mb-1">
+                                        <div class="card-header">Min. 52 Semanas</div>
+                                        <div class="card-body">
+                                            <h5 class="fs-2 fw-bold">
+                                                <%= info.fiftyTwoWeekLow %>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                    <div class="card border-dark mb-1">
+                                        <div class="card-header">Max. 52 Semanas</div>
+                                        <div class="card-body">
+                                            <h5 class="fs-2 fw-bold">
+                                                <%= info.fiftyTwoWeekHigh %>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                    <div class="card border-dark mb-1">
+                                        <div class="card-header">Capitalização de Mercado</div>
+                                        <div class="card-body">
+                                            <h5 class="fs-2 fw-bold">
+                                                <%=info.marketCap%>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%if(info._52WeekChange < 0){ %>
+                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                        <div class="card border-danger text-danger mb-1">
+                                            <div class="card-header">Variação 52 Semanas</div>
+                                            <div class="card-body">
+                                                <h5 class="fs-2 fw-bold">
+                                                    <%=info._52WeekChange%>%
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%} else{ %>
+                                        <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                            <div class="card border-dark mb-1">
+                                                <div class="card-header">Variação 52 Semanas</div>
+                                                <div class="card-body">
+                                                    <h5 class="fs-2 fw-bold">
+                                                        <%= info._52WeekChange %>%
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">Dividend Yield</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.dividendYield %>%
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">Média 200 Dias</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.twoHundredDayAverage %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">Média 50 Dias</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.fiftyDayAverage %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">EBITDA</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.ebitda %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">EV</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.enterpriseValue %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                <div class="card border-dark mb-1">
+                                                    <div class="card-header">Volume Médio 10 Dias</div>
+                                                    <div class="card-body">
+                                                        <h5 class="fs-2 fw-bold">
+                                                            <%= info.averageVolume10days %>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%if(info.recommendationKey==='buy' ){%>
+                                                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                    <div class="card bg-success text-white mb-1">
+                                                        <div class="card-header">Recomendação</div>
+                                                        <div class="card-body">
+                                                            <h5 class="fs-2 fw-bold">compra</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <%}else if(info.recommendationKey==='sell' ){%>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                        <div class="card bg-danger text-white mb-1">
+                                                            <div class="card-header">Recomendação</div>
+                                                            <div class="card-body">
+                                                                <h5 class="fs-2 fw-bold">vender</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%}else if(info.recommendationKey==='hold' ){%>
+                                                        <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                            <div class="card bg-warning text-white mb-1">
+                                                                <div class="card-header">Recomendação</div>
+                                                                <div class="card-body">
+                                                                    <h5 class="fs-2 fw-bold">manter</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}else{%>
+                                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                                <div class="card border-dark text-dark mb-1">
+                                                                    <div class="card-header">Recomendação</div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="fs-2 fw-bold">nenhuma</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <%}%>
+                                                                <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                                    <div class="card border-dark text-dark mb-1">
+                                                                        <div class="card-header">Margem Líquida</div>
+                                                                        <div class="card-body">
+                                                                            <h5 class="fs-2 fw-bold">
+                                                                                <%=info.profitMargins%>
+                                                                            </h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <%if(info.returnOnEquity < 0){%>
+                                                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                                        <div class="card border-danger text-dark mb-1">
+                                                                            <div class="card-header">ROE</div>
+                                                                            <div class="card-body">
+                                                                                <h5 class="fs-2 fw-bold">
+                                                                                    <%=info.returnOnEquity%>
+                                                                                </h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <%}else{%>
+                                                                        <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                                                                            <div
+                                                                                class="card border-dark text-dark mb-1">
+                                                                                <div class="card-header">ROE</div>
+                                                                                <div class="card-body">
+                                                                                    <h5 class="fs-2 fw-bold">
+                                                                                        <%=info.returnOnEquity%>
+                                                                                    </h5>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <%}%>
+                            </div>
+                            <% if(polygonInfo.similar){ %>
+                                <hr>
+                                <p class="fs-4">Empresas do setor</p>
+                                <% for(let item of polygonInfo.similar){ %>
+                                    <a href="/<%=item%>"><span class="badge bg-secondary fs-6 mx-1 my-1 tags">
+                                            <%= item %>
+                                        </span></a>
+                                    <% } %>
+                                        <% } %>
+                                            <br>
+                                            <hr>
+                                            <a href="/cards" class="btn btn-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-arrow-return-left"
+                                                    viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+                                                </svg>
+                                                Cards
+                                            </a>
         </div>
     </div>
 
