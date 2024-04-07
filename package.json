@@ -22,7 +22,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.12"
   },
-  "main": "app.js",
+  "main": "index.js",
   "author": "Ronaldo",
   "license": "ISC",
   "keywords": [
